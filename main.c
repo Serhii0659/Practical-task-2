@@ -1,4 +1,20 @@
 #include <stdio.h>
+#include <conio.h>
+
+// Найбільший спільний дільник
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+// Найменше спільне кратне
+int lcm(int a, int b) {
+    return a * (b / gcd(a, b));
+}
 
 int main () {
     int amount;
@@ -20,7 +36,17 @@ int main () {
     for (int i = 0; i < amount; i++) {
         printf("%d ", numbers[i]);
     }
-    // Вхідні дані: в першому рядку задано кількість чисел р(2 ≤ р ≤ 20), а в другому рядку р натуральних чисел, розділені пробілом
-    // Вихідні дані: найменше спільне кратне заданих чисел
+    printf("\n");
+
+    // Розрахунок НСК для всіх введених чисел
+    int result = numbers[0];
+    for (int i = 1; i < amount; i++) {
+        result = lcm(result, numbers[i]);
+    }
+
+    printf("The Least Common Multiple is: %d\n", result);
+
+    printf ("Press any key to exit the program.");
+    getch ();
     return 0;
 }
