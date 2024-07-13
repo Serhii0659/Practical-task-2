@@ -50,3 +50,4 @@ int main () {
     getch ();
     return 0;
 }
+// Зміна в проєкті
